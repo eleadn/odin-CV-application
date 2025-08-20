@@ -107,7 +107,9 @@ export default function EducationForm() {
 								Remove
 							</button>
 						</div>
-						<div>----------</div>
+						{index === draft.length - 1 ? (
+							<div>----------</div>
+						) : null}
 					</div>
 				))}
 				<div>
@@ -123,7 +125,7 @@ export default function EducationForm() {
 			<button type="button" onClick={setEditMode}>
 				Edit
 			</button>
-			{education.map((school) => (
+			{education.map((school, index) => (
 				<div key={school.id}>
 					<div>----------</div>
 					<h3>{school.name}</h3>
@@ -134,7 +136,9 @@ export default function EducationForm() {
 							: ""}
 						{school.date}
 					</div>
-					<div>----------</div>
+					{index === education.length - 1 ? (
+						<div>----------</div>
+					) : null}
 				</div>
 			))}
 		</>
