@@ -33,6 +33,13 @@ export default function InformationsForm() {
 
 	const onSubmit = (e) => {
 		e.preventDefault();
+
+		const form = e.target;
+		if (!form.checkValidity()) {
+			form.reportValidity();
+			return;
+		}
+
 		setInformations(draft);
 		setIsEditing(false);
 	};

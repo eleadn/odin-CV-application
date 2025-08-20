@@ -46,6 +46,13 @@ export default function EducationForm() {
 
 	const onSubmit = (e) => {
 		e.preventDefault();
+
+		const form = e.target;
+		if (!form.checkValidity()) {
+			form.reportValidity();
+			return;
+		}
+
 		setIsEditing(false);
 		setEducation([...draft]);
 	};
@@ -71,6 +78,7 @@ export default function EducationForm() {
 									onSchoolNameChange(event, index)
 								}
 								value={school.name}
+								required
 							/>
 						</div>
 						<div>

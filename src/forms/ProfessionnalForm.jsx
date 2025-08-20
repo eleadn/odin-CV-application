@@ -63,6 +63,13 @@ export default function ProfessionnalForm() {
 
 	const onSubmit = (e) => {
 		e.preventDefault();
+
+		const form = e.target;
+		if (!form.checkValidity()) {
+			form.reportValidity();
+			return;
+		}
+
 		setIsEditing(false);
 		setProfession([...draft]);
 	};
@@ -86,6 +93,7 @@ export default function ProfessionnalForm() {
 								type="text"
 								onChange={(event) => onNameChange(event, index)}
 								value={p.name}
+								required
 							/>
 						</div>
 						<div>
@@ -99,6 +107,7 @@ export default function ProfessionnalForm() {
 									onTitleChange(event, index)
 								}
 								value={p.title}
+								required
 							/>
 						</div>
 						<div>
@@ -127,6 +136,7 @@ export default function ProfessionnalForm() {
 									onStartDateChange(event, index)
 								}
 								value={p.dateFrom}
+								required
 							/>
 						</div>
 						<div>
