@@ -11,8 +11,8 @@ export default function ProfessionnalForm() {
 		const name = "";
 		const title = "";
 		const description = "";
-		const dateFrom = null;
-		const dateTo = null;
+		const dateFrom = "";
+		const dateTo = "";
 
 		const newDraft = [
 			...draft,
@@ -46,13 +46,25 @@ export default function ProfessionnalForm() {
 
 	const onStartDateChange = (event, index) => {
 		const newDraft = [...draft];
-		newDraft[index].dateFrom = event.target.value;
+
+		if (event.target.value) {
+			newDraft[index].dateFrom = event.target.value;
+		} else {
+			newDraft[index].dateFrom = "";
+		}
+
 		setDraft(newDraft);
 	};
 
 	const onEndDateChange = (event, index) => {
 		const newDraft = [...draft];
-		newDraft[index].dateTo = event.target.value;
+
+		if (event.target.value) {
+			newDraft[index].dateTo = event.target.value;
+		} else {
+			newDraft[index].dateTo = "";
+		}
+
 		setDraft(newDraft);
 	};
 
@@ -76,7 +88,7 @@ export default function ProfessionnalForm() {
 
 	if (isEditing) {
 		return (
-			<form onSubmit={onSubmit}>
+			<form onSubmit={onSubmit} className="CV-category">
 				<h2>Professionnal Experience</h2>
 				<button type="button" onClick={addProfession}>
 					Add
@@ -173,7 +185,7 @@ export default function ProfessionnalForm() {
 	}
 
 	return (
-		<>
+		<div className="CV-category">
 			<h2>Professionnal Experience</h2>
 			<button type="button" onClick={setEditMode}>
 				Edit
@@ -193,6 +205,6 @@ export default function ProfessionnalForm() {
 					) : null}
 				</div>
 			))}
-		</>
+		</div>
 	);
 }

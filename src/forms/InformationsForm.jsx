@@ -46,7 +46,7 @@ export default function InformationsForm() {
 
 	if (isEditing) {
 		return (
-			<form onSubmit={onSubmit}>
+			<form onSubmit={onSubmit} className="CV-category">
 				<h2>General Informations</h2>
 				<div>
 					<label htmlFor="name">Name: </label>
@@ -104,7 +104,7 @@ export default function InformationsForm() {
 	}
 
 	return (
-		<>
+		<div className="CV-category">
 			<h2>General Informations</h2>
 			<button type="button" onClick={setEditMode}>
 				Edit
@@ -116,6 +116,6 @@ export default function InformationsForm() {
 			<div>{informations.mail}</div>
 			<div>{informations.phone}</div>
 			<div>{informations.adress}</div>
-		</>
+		</div>
 	);
 }

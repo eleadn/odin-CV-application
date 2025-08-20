@@ -10,7 +10,7 @@ export default function EducationForm() {
 		const id = crypto.randomUUID();
 		const name = "";
 		const title = "";
-		const date = null;
+		const date = "";
 
 		const newDraft = [...draft];
 		newDraft.push({ id, name, title, date });
@@ -36,7 +36,14 @@ export default function EducationForm() {
 
 	const onSchoolDateChange = (event, index) => {
 		const newDraft = [...draft];
-		newDraft[index].date = event.target.value;
+
+		if (event.target.value) {
+			newDraft[index].date = event.target.value;
+		} else {
+			newDraft[index].date = "";
+		}
+
+		setDraft(newDraft);
 	};
 
 	const setEditMode = () => {
@@ -59,7 +66,7 @@ export default function EducationForm() {
 
 	if (isEditing) {
 		return (
-			<form onSubmit={onSubmit}>
+			<form onSubmit={onSubmit} className="CV-category">
 				<h2>Education</h2>
 				<button type="button" onClick={addEducation}>
 					Add
@@ -128,7 +135,7 @@ export default function EducationForm() {
 	}
 
 	return (
-		<>
+		<div className="CV-category">
 			<h2>Education</h2>
 			<button type="button" onClick={setEditMode}>
 				Edit
@@ -149,6 +156,6 @@ export default function EducationForm() {
 					) : null}
 				</div>
 			))}
-		</>
+		</div>
 	);
 }
